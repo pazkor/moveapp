@@ -25,8 +25,8 @@ Install dependencies using pip:
 
 ```bash
 pip install pystray pillow plyer pywin32
-
-
+```
+ How to Run
 Download moveapp.pyw, trayicon.png, and bannerlogo.png into the same folder.
 
 Double-click moveapp.pyw — it will run silently in the tray.
@@ -36,5 +36,3 @@ Right-click the tray icon to:
 Open Settings
 
 Enable or disable Run at Startup
-
-
