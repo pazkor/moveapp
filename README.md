@@ -24,7 +24,7 @@ It runs silently in the system tray and reminds you to:
 Install dependencies using pip:
 
 ```bash
-pip install pystray pillow plyer pywin32
+pip install pystray pillow plyer pywin32 psutil
 ```
 
  How to Run
