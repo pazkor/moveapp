@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import ttk
 from pystray import Icon, MenuItem, Menu
 from PIL import Image, ImageTk, ImageDraw, ImageOps
+import psutil  # NEW
 
 LOCK_FILE = os.path.join(tempfile.gettempdir(), 'move_app.lock')
 
@@ -17,7 +18,16 @@ stop_event = threading.Event()
 
 def check_already_running():
     if os.path.exists(LOCK_FILE):
-        sys.exit(0)
+        try:
+            with open(LOCK_FILE, 'r') as f:
+                old_pid = int(f.read())
+            if psutil.pid_exists(old_pid):
+                sys.exit(0)
+            else:
+                os.remove(LOCK_FILE)
+        except:
+            os.remove(LOCK_FILE)
+
     with open(LOCK_FILE, 'w') as f:
         f.write(str(os.getpid()))
     import atexit
